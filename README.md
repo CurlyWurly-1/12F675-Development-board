@@ -1,6 +1,6 @@
 # 12F675-Development-board
 
-The PIC12G675 is an 8 pin PIC microcontroller with 6 GPIO pins.  
+The PIC12F675 is an 8 pin PIC microcontroller with 6 GPIO pins.  
 
 This repository is for collecting programs written in "C" that can be used with the PIC12F675 development board as pictured below.
 
