@@ -1,6 +1,6 @@
 # 12F675-Development-board
 
-This repository is for collecting programs written in XC8 "C" that can be used with the PIC12F675 development board as pictured below.
+This repository is for collecting programs written in "C" that can be used with the PIC12F675 development board as pictured below.
 N.B. When you buy this board, you only get what you see inthe picture - the installed pic chip and a USB power supply cable that connects to this board via its barrel connector. To program this, you also need a "pickit 3" (see below for more information about this) 
 
 <img src="images/12f675 board.jpg" alt="Dev board"/>
