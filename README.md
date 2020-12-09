@@ -10,11 +10,11 @@ Please note:
    - main_02_Interupt 	 
    - main_03_timer 	 	 
    - main_04_ADC 
-- When you buy this board, you only get what you see in the picture - a development board with a 12F675 pic chip already installed and a USB (power only) supply cable that connects to this board via its barrel connector. 
- - To program the installed pic chip using this board, you also need a "pickit 3" device which connects to the ISCP interface (white housing) via a 6 wire dupont harness. See below for more information about this. 
+- When you buy this board, you only get what you see in the picture - a development board with a 12F675 pic chip already installed and a USB (power only) supply cable that connects board's barrel connector. 
+ - To program the installed pic chip using this board, you also need a "pickit 3" device which connects to the ISCP interface (white housing) via a 6 wire dupont harness. (See below for more information about this) 
  - There are 2 ways to supply regulated 5V to this dev board. (N.B. There is no power supply regulator onboard - do not exceed 5V)
    - via the supplied USB to Barrel connector. 
-   - Via the "Pick it 3" Device (Try to avoid this this technique - the voltage supplied from the Pickit 3 is usually too low to be relaible and the MPLAB X IDE detects this) 
+   - Via the "Pick it 3" Device (Try to avoid this this technique - the voltage supplied from the Pickit 3 is usually too low to be reliable with the MPLAB X IDE detecting this) 
 
 
 <img src="images/12f675 board.jpg" alt="Dev board"/>
