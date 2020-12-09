@@ -12,9 +12,9 @@ To use any of the programs, all you have to do is the following:
 
 SETUP
 - On your PC, 
- - Download and install both the MPLAB X IDE and XC8 compiler from the MPLAB website (It is free) 
- - Plug in the USB power cable and connect it to your 12F675 development board (This cable is only used for powering the board) 
- - Plug in the USB cable of Pick-it" device and ensure the 6 leads of the "Pick-it" device are inserted correctly into the board (N.B. The pin marked VPP on the board should connect the pin marked with a triangle on the "Pick-it" device  
+  - Download and install both the MPLAB X IDE and XC8 compiler from the MPLAB website (It is free) 
+  - Plug in the USB power cable and connect it to your 12F675 development board (This cable is only used for powering the board) 
+  - Plug in the USB cable of Pick-it" device and ensure the 6 leads of the "Pick-it" device are inserted correctly into the board (N.B. The pin marked VPP on the board should connect the pin marked with a triangle on the "Pick-it" device  
 
 PROGRAMMING
 - In this GITHUB repository
