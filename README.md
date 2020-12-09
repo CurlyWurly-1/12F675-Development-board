@@ -18,6 +18,7 @@ The Schematic for this board is as below. as well as a socket for the pic chip, 
  - ICSP pins         - White housing of 6 pins - used for the programming interface
 
 N.B. If you remove a jumper, it disconnects the pic's GPIO pin from its associated LED/switch/variable resistor. This means you can connect any of the 6 exposed header pins to whatever you want via a standard female dupoint wire. 
+
 N.B. The "VDD" and "Ground" pin twins are permanently connected by a track under the board - so these 2 jumpers are effectively spares  - You can remove them with no ill effect, with the now exposed header pins being available for supplying 5V or 0V to whatever you want to connect them to
 
 <img src="images/12f675 schematic.jpg" alt="Schematic"/>
