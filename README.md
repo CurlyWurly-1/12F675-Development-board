@@ -28,12 +28,10 @@ The Schematic for this board is as below. as well as a socket for the pic chip, 
  - Three switches    - Linked via yellow jumpers to pins GP2, GP3, GP5 (N.B. GP3 is the MCLR pin - To avoid hassles, only use it as an input pin)
  - Variable resistor - Linked via yellow jumper  to pin  GP4  
  - ICSP pins         - White housing of 6 pins - used for the programming interface
-
-N.B. If you remove a jumper, it disconnects the pic's GPIO pin from its associated LED/switch/variable resistor. This means you can connect any of the 6 exposed header pins to whatever you want via a standard female dupoint wire. 
-
-N.B. The other 2 pins are for "VDD" and "Ground". These pin twins are permanently connected by a track under the board - so these 2 jumpers are effectively spares - You can remove these jumpers with no ill effect, with the now exposed header pins being available for supplying 5V or 0V to whatever you want to connect them to
+ - 8 jumpers         - Except for the "VDD" and "Ground" jumpers, removing a jumper disconnects the pic's GPIO pin from its associated LED/switch/variable resistor. This means you can connect a standard female dupoint wire to any of these now exposed header pins to whatever you want.  As mentioned earlier, The exception to this are the "VDD" and "Ground" jumpers because for these 2 jumpers, the pins are connected by a track underneath the board anyway. This means that you can remove these jumpers with no ill effect and use exposed header pin pairs for these 2 to connect 5V or 0V respectively - to whatever external devices you want to connect to 
 
 <img src="images/12f675 schematic.jpg" alt="Schematic"/>
+
 
 # "Pickit 3" device
 If you want to program the board as per these examples, you will also need a "Pickit 3" device like the one you see below - If you haven't already got one, make sure you buy it at the same time as you buy the Development board. N.B. The clones seem to work OK. 
