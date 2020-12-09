@@ -2,7 +2,7 @@
 
 The PIC12F675 is an 8 pin PIC microcontroller with 6 GPIO pins.  
 
-This repository is for collecting programs written in "C" that can be used with the PIC12F675 development board as pictured below.
+This repository is for collecting "C" programs (XC8) that can be used in the MPLAB X IDE to program the PIC12F675 development board as seen in the picture below  
 Please note:
 - When you buy this board, you only get what you see in the picture - a development board with a 12F675 pic chip already installed and a USB (power only) supply cable that connects to this board via its barrel connector. 
  - To program the installed pic chip using this board, you also need a "pickit 3" device which connects to the ISCP interface (white housing) via a 6 wire dupont harness. See below for more information about this. 
