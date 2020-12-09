@@ -35,9 +35,9 @@ The Schematic for this board is pictured below and it has the following componen
 
 
 # "Pickit 3" device
-If you want to program the board as per these examples, you will also need a "Pickit 3" device like the one you see below - If you haven't already got one, make sure you buy it at the same time as you buy the Development board. N.B. The clones seem to work OK. 
+If you want to program the board as per these examples, you will also need a "Pickit 3" device like the red one you see in the picture below - If you haven't already got one, make sure you buy it at the same time as you buy the Development board. N.B. The clones seem to work OK. 
 
-The "Pickit 3" device is connected to your PC via a USB connector and to the development board's 6 pin connector (White housing) via a 6 wire dupoint female to male harness. You must use the wiring harness because you can't directly attached the "Pickit 3" to the board - the white housing prevents this.
+The "Pickit 3" device connects to your PC via a (blue) USB cable and to the development board via the supplied 6 wire cable harness to the 6 pins in the board's ISCP white housing. You must use this 6 wire cable harness because you can't directly attached the "Pickit 3" to the board - the white housing prevents this.
 
 <img src="images/pickit3.jpg" alt="Pickit 3"/>
 
