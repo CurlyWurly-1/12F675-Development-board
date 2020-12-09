@@ -6,6 +6,8 @@ These C programs are listed in folder "CODE" and have been generated using the l
 
 <img src="images/12f675 board.jpg" alt="Dev board"/>
 
+<img src="images/12f675 schematic.jpg" alt="Schematic"/>
+
 
 # List of programs in folder CODE
  - main_01_LED  
