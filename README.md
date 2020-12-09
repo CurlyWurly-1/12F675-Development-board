@@ -1,12 +1,23 @@
 # 12F675-Development-board
 
-This repository is for collecting the C programs that can be used with the PIC12F675 development board as seen in the picture above. 
-When you buy this board, the only thing you normally get is the USB power supply cable
-These C programs are listed in folder "CODE" and have been generated using the latest MPLAB X IDE with the XC8 Compiler (Dec 2020)
-
 <img src="images/12f675 board.jpg" alt="Dev board"/>
-
 <img src="images/12f675 schematic.jpg" alt="Schematic"/>
+
+This repository is for collecting the C programs that can be used with the above pictured PIC12F675 development board.
+The following programs can be seen in folder "CODE" - They have been tested with the latest MPLAB X IDE using the XC8 Compiler (Dec 2020)
+
+- main_01_LED  
+- main_02_Interupt 	 
+- main_03_timer 	 	 
+- main_04_ADC 
+
+
+
+N.B. When you buy this board, you only get the board, the installed pic chip and a USB power supply cable.
+If you want to program the board as per these examples, you will also need a "Pickit" device like the one you see below - make sure you buy one at the same time as you buy the Development board. N.B. The clones also seem to work
+
+
+
 
 
 # List of programs in folder CODE
