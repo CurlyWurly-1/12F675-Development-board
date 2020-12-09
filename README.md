@@ -13,7 +13,7 @@ Please note:
 - When you buy this board, you only get what you see in the picture below - a blue coloured development board with a 12F675 pic chip already installed and a black USB (power only) supply cable that connects to the board's black barrel connector. 
  - To program the installed pic chip using this board, you also need a "pickit 3" device which connects to the boards white housing ISCP interface via a 6 wire dupont harness. (See below for more information about this) 
  - There are 2 ways to supply regulated 5V to this dev board. (N.B. There is no power supply regulator onboard - do not exceed 5V)
-   - via the supplied USB to Barrel connector. 
+   - via the supplied black USB to Barrel connector. 
    - Via the "Pick it 3" Device  - Try to avoid using this technique - The voltage supplied to the board from the "Pickit 3" device can be lower than 5V with the MPLAB X IDE detecting this and reporting it as a fatal error. This seems to happen more with "Pickit 3" clones. 
 
 
