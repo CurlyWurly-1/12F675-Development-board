@@ -4,7 +4,7 @@ This repository is for collecting programs written in "C" that can be used with 
 
 N.B. When you buy this board, you only get what you see in the picture - a development board with a 12F675 pic chip already installed and a USB (power only) supply cable that connects to this board via its barrel connector. 
 
-To program the installed pic chip using this board, you alson eed a "pickit 3" device which connects to the ISCP interface (white houising) via 6 wires. See below for more information about how to program) 
+To program the installed pic chip using this board, you alson eed a "pickit 3" device which connects to the ISCP interface (white houising) via 6 wires. See below for more information about how to program. 
 
 <img src="images/12f675 board.jpg" alt="Dev board"/>
 
