@@ -7,16 +7,20 @@ These C programs are listed in folder "CODE" and have been generated using the l
 <img src="images/12f675 board.jpg" alt="Dev board"/>
 
 
+# LIST OF PROGRAMS IN THIS REPOSITORY
+ - Experiment_01_LED  
+ - Experiment_02_Interupt 	 
+ - Experiment_03_timer 	 	 
+ - Experiment_04_ADC 
 
-To use any of the programs, all you have to do is the following: 
 
-SETUP
+# HOW TO SETUP THE SOFTWARE AND CONNECT THE COMPONENTS
 - On your PC, 
   - Download and install both the MPLAB X IDE and XC8 compiler from the MPLAB website (It is free) 
   - Plug in the USB power cable and connect it to your 12F675 development board (This cable is only used for powering the board) 
   - Plug in the USB cable of Pick-it" device and ensure the 6 leads of the "Pick-it" device are inserted correctly into the board (N.B. The pin marked VPP on the board should connect to the pin marked with a white triangle on the "Pick-it" device  
 
-PROGRAMMING
+# HOW TO PROGRAM THE BOARD
 - In this GITHUB repository
   - Look in folder "CODE" and decide which of the programs you want to program into your PIC12F675 e.g. "main_01_LED"
 - On your PC, execute MPLAB X and:
@@ -26,21 +30,13 @@ PROGRAMMING
   - Press "Make and Program" to program the PIC using a Pickit 3 programmer
   - Enjoy your programmed device
 
-N.B. The original programs are in folder "BK300_original_code" and are as follows
- - Experiment_01_LED  
- - Experiment_02_Interupt 	 
- - Experiment_03_timer 	 	 
- - Experiment_04_ADC 
 
-# Layout of Components
+# DEVELPMENT BOARD SCHEMATIC
 <img src="BK300_Layout.jpg" alt="BK300 Layout"/>
 
 
-# Schematic Diagram
-<img src="BK300_Circuit_Diagram.jpg" alt="BK300 Schematics"/>
-
-# Important points
-- The following 6 items are not normally supplied with the development board. You will need to obtain the following so you can use the associated software
+# IMPORTANT POINTS
+- The following item is not normally supplied with the development board. You will need purchase this to be able to program the pic
   - "Pickit 3" programmer not supplied - You need to purchase this separately. If you don't have this programmer, you cannot load anything into the pic 
  - There are 2 ways to supply regulated 5V to this dev board. (N.B. There is no power supply regulator onboard - a regulated 5v supply must be used)
    - via a USB (Mini USB cable type) connector. 
