@@ -1,16 +1,19 @@
 # 12F675-Development-board
 
 This repository is for collecting programs written in "C" that can be used with the PIC12F675 development board as pictured below.
-N.B. When you buy this board, you only get what you see inthe picture - the installed pic chip and a USB power supply cable that connects to this board via its barrel connector. To program this, you also need a "pickit 3" (see below for more information about this) 
+
+N.B. When you buy this board, you only get what you see in the picture - a development board with a 12F675 pic chip already installed and a USB (power only) supply cable that connects to this board via its barrel connector. 
+
+To program thye pic chip using this board, you alsoneed a "pickit 3" which connects to the ISCP interface (white houising) via 6 wires. See below for more information about programming) 
 
 <img src="images/12f675 board.jpg" alt="Dev board"/>
 
 
-The Schematic for this board is as below. as well as a socket for the pic chip, it also has
+The Schematic for this board is as below. as well as a socket for the pic chip, the board also has
  - Power switch      - This on/off power switch is connected to the barrel connector 
  - "Poweron" LED     - It is always on when power is applied to the board (annoyingly bright !!)
  - Two LEDS          - Linked via yellow jumpers to pins GP0, GP1
- - Three switches    - Linked via yellow jumpers to pins GP2, GP3, GP5
+ - Three switches    - Linked via yellow jumpers to pins GP2, GP3, GP5 (N.B. GP3 is the MCLR pin - To avoid hassles, only use it as an input pin)
  - Variable resistor - Linked via yellow jumper  to pin  GP4  
  - ICSP pins         - White housing of 6 pins - used for the programming interface
 
