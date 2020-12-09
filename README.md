@@ -1,14 +1,21 @@
 # 12F675-Development-board
 
-This repository is for collecting the C programs that can be used with the PIC12F675 development board as pictured below.
-N.B. When you buy this board, you only get the board, the installed pic chip and a USB power supply cable that connects to this board via its barrel connector.
+This repository is for collecting programs written in XC8 "C" that can be used with the PIC12F675 development board as pictured below.
+N.B. When you buy this board, you only get what you see inthe picture - the installed pic chip and a USB power supply cable that connects to this board via its barrel connector. To program this, you also need a "pickit 3" (see below for more information about this) 
 
 <img src="images/12f675 board.jpg" alt="Dev board"/>
 
 
-The Schematic for this board is as below.
-The board has two LEDS and three switches which can be linked to their designated PIC12F675 GPIO pins via a yellow jumper (see schematic for what goes where). If you remove the jumper, you disconnect the switch or LED from the pic GPIO pin, and alternatively, you can connect the GPIO pin to whetever you want via a standard female dupoint wire attached to the exposed header pin. 
-N.B. The "VDD" and "Ground" pin twins are permanently connected by a track under the board - you can remove their jumpers and use the header pins for supplying 5V or 0V to your externally connected devices
+The Schematic for this board is as below. as well as a socket for the pic chip, it also has
+ - Power switch      - This on/off power switch is connected to the barrel connector 
+ - "Poweron" LED     - It is always on when power is applied to the board (annoyingly bright !!)
+ - Two LEDS          - Linked via yellow jumpers to pins GP0, GP1
+ - Three switches    - Linked via yellow jumpers to pins GP2, GP3, GP5
+ - Variable resistor - Linked via yellow jumper  to pin  GP4  
+ - ICSP pins         - White housing of 6 pins - used for the programming interface
+
+N.B. If you remove a jumper, it disconnects the pic's GPIO pin from its associated LED/switch/variable resistor. This means you can connect any of the 6 exposed header pins to whatever you want via a standard female dupoint wire. 
+N.B. The "VDD" and "Ground" pin twins are permanently connected by a track under the board - These jumpers are efectively spares and you can remove them with the now exposed header pins being availble for supplying 5V or 0V to whatever you want to connect them to
 
 <img src="images/12f675 schematic.jpg" alt="Schematic"/>
 
@@ -16,6 +23,11 @@ N.B. The "VDD" and "Ground" pin twins are permanently connected by a track under
 If you want to program the board as per these examples, you will also need a "Pickit" device like the one you see below - make sure you buy one at the same time as you buy the Development board. N.B. The clones also seem to work. This device connects to your PC via a USB connector and to the board via the 6 pin jtag connector
 
 <img src="images/pickit3.jpg" alt="Pickit 3"/>
+
+# Other variants opf this pic with the same pinout (6 GPIO pins)
+- 12F675  - internal clock of  4 MHz
+- 12F683  - Internal clock of 16 MHz
+- 12F1840 - 4K words and internal clock of 32 MHz
 
 
 # List of programs in folder CODE
@@ -27,7 +39,8 @@ If you want to program the board as per these examples, you will also need a "Pi
 # Other places to get information
  - GettingBlinky with assmebler
    - https://leap.tardate.com/pic/gettingblinky/
- - 
+ - Watchdog info   
+   - https://www.youtube.com/watch?v=tPUwuX4tHOw 
 
 
 # How to get familiar with this board
