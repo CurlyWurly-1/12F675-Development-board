@@ -14,15 +14,15 @@ SETUP
 - On your PC, 
   - Download and install both the MPLAB X IDE and XC8 compiler from the MPLAB website (It is free) 
   - Plug in the USB power cable and connect it to your 12F675 development board (This cable is only used for powering the board) 
-  - Plug in the USB cable of Pick-it" device and ensure the 6 leads of the "Pick-it" device are inserted correctly into the board (N.B. The pin marked VPP on the board should connect the pin marked with a triangle on the "Pick-it" device  
+  - Plug in the USB cable of Pick-it" device and ensure the 6 leads of the "Pick-it" device are inserted correctly into the board (N.B. The pin marked VPP on the board should connect to the pin marked with a white triangle on the "Pick-it" device  
 
 PROGRAMMING
 - In this GITHUB repository
   - Look in folder "CODE" and decide which of the programs you want to program into your PIC12F675 e.g. "main_01_LED"
-- On your PC
-  - Execute MPLAB X and create a new standalone project for PIC12F675 naming it the same as the program you want to use e.g. "main_01_LED". As part of this process, you select the XC8 compiler and the "Pick-it" programming device that is a attached 
-  - Using MPLAB X while focussed on the new project, right click on the section "Source Files" and create a new "Main C" file naming it the simliar to the project above e.g. "main_01_LED.c"  
-  - Copy the code from the selected program (e.g. from "main_01_LED"), paste it into this new file and save it
+- On your PC, execute MPLAB X and:
+  - Create a new standalone project for PIC12F675 naming it the same as the program you want to use e.g. "main_01_LED". As part of this process, you select the XC8 compiler and the "Pick-it" programming device that is a attached 
+  - Highlight section called "Source Files"and right click to create a new "Main C" file. Use a name simliar to the project above e.g. "main_01_LED.c"  
+  - Copy and paste the code into this new "Main" file and save it (The code comes from the Github Repository you looked at previously)
   - Press "Make and Program" to program the PIC using a Pickit 3 programmer
   - Enjoy your programmed device
 
