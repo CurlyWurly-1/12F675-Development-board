@@ -28,7 +28,7 @@ The Schematic for this board is as below. as well as a socket for the pic chip, 
  - Three switches    - Linked via yellow jumpers to pins GP2, GP3, GP5 (N.B. GP3 is the MCLR pin - To avoid hassles, only use it as an input pin)
  - Variable resistor - Linked via yellow jumper  to pin  GP4  
  - ICSP pins         - White housing of 6 pins - used for the programming interface
- - 8 jumpers         - Except for the "VDD" and "Ground" jumpers, removing a jumper disconnects the pic's GPIO pin from its associated LED/switch/variable resistor. This means you can connect a standard female dupoint wire to any of these now exposed header pins to whatever you want.  As mentioned earlier, The exception to this are the "VDD" and "Ground" jumpers because for these 2 jumpers, the pins are connected by a track underneath the board anyway. This means that you can remove these jumpers with no ill effect and use exposed header pin pairs for these 2 to connect 5V or 0V respectively - to whatever external devices you want to connect to 
+ - 8 jumpers         - Except for the "VDD" and "Ground" jumpers, removing a jumper disconnects the pic's GPIO pin from its associated LED/switch/variable resistor. This means you can connect a standard female dupoint wire to any of these now exposed header pins to whatever you want.  As mentioned earlier, The exception to this are the "VDD" and "Ground" jumpers because for these 2 jumpers, the pin pairs are connected by a track underneath the board anyway. This means that you can remove these jumpers with no ill effect and use the now exposed header pins to connect 5V or 0V respectively - to whatever external devices you want to connect to 
 
 <img src="images/12f675 schematic.jpg" alt="Schematic"/>
 
