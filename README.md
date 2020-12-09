@@ -8,9 +8,15 @@ N.B. When you buy this board, you only get what you see in the picture - a devel
 
 To program the installed pic chip using this board, you also need a "pickit 3" device which connects to the ISCP interface (white housing) via a 6 wire dupont harness. See below for more information about this. 
 
+There are 2 ways to supply regulated 5V to this dev board. (N.B. There is no power supply regulator onboard - do not exceed 5V)
+ - via a USB (Mini USB cable type) connector. 
+ - Via the "Pick it 3" Device (Try to avoid this this technique - the voltage supplied from the Pickit 3 can be too low and this causes problems) 
+
+
 <img src="images/12f675 board.jpg" alt="Dev board"/>
 
 
+# Development Board Schematic information
 The Schematic for this board is as below. as well as a socket for the pic chip, the board also has the following components:
  - Power switch      - This on/off power switch is connected to the barrel connector 
  - "Poweron" LED     - It is always on when power is applied to the board (annoyingly bright !!)
@@ -25,17 +31,12 @@ N.B. The other 2 pins are for "VDD" and "Ground". These pin twins are permanentl
 
 <img src="images/12f675 schematic.jpg" alt="Schematic"/>
 
-
+# "Pickit 3" device
 If you want to program the board as per these examples, you will also need a "Pickit 3" device like the one you see below - If you haven't already got one, make sure you buy it at the same time as you buy the Development board. N.B. The clones seem to work OK. 
 
 The "Pickit 3" device is connected to your PC via a USB connector and to the development board's 6 pin connector (White housing) via a 6 wire dupoint female to male harness. You must use the wiring harness because you can't directly attached the "Pickit 3" to the board - the white housing prevents this.
 
 <img src="images/pickit3.jpg" alt="Pickit 3"/>
-
-# Other variants of this pic with the same pinout (6 GPIO pins)
-- 12F675  - internal clock of  4 MHz
-- 12F683  - Internal clock of 16 MHz
-- 12F1840 - 4K words and internal clock of 32 MHz
 
 
 # List of programs in folder CODE
@@ -43,12 +44,6 @@ The "Pickit 3" device is connected to your PC via a USB connector and to the dev
  - main_02_Interupt 	 
  - main_03_timer 	 	 
  - main_04_ADC 
-
-# Other places to get information
- - GettingBlinky with assmebler
-   - https://leap.tardate.com/pic/gettingblinky/
- - Watchdog info   
-   - https://www.youtube.com/watch?v=tPUwuX4tHOw 
 
 
 # How to get familiar with this board
@@ -60,12 +55,14 @@ The "Pickit 3" device is connected to your PC via a USB connector and to the dev
   - PIC Assembly Language Update: #1.1 - PCB schematic
     - https://www.youtube.com/watch?v=TneWtGyar6M&t=192s
 
+
 # How to set up and install the software and componenets
 The above videos cover this - alternatively, follow the steps below
 - On your PC, 
   - Download and install both the MPLAB X IDE and XC8 compiler from the MPLAB website (It is free) 
   - Plug in the USB power cable and connect it to your 12F675 development board (This cable is only used for powering the board) 
   - Plug in the USB cable of Pick-it" device and ensure the 6 leads of the "Pick-it" device are inserted correctly into the board (N.B. The pin marked VPP on the board should connect to the pin marked with a white triangle on the "Pick-it" device  
+
 
 # How to Program the pic12f675 using the development board
 - Ensure you are setup as per the previous section
@@ -79,13 +76,14 @@ The above videos cover this - alternatively, follow the steps below
   - Enjoy your programmed device
 
 
+# Other variants of this pic with the same pinout (6 GPIO pins)
+- 12F675  - internal clock of  4 MHz
+- 12F683  - Internal clock of 16 MHz
+- 12F1840 - 4K words and internal clock of 32 MHz
 
-# Important points
-- The following item is not normally supplied with the development board. You will need purchase this to be able to program the pic
-  - "Pickit 3" programmer not supplied - You need to purchase this separately. If you don't have this programmer, you cannot load anything into the pic 
- - There are 2 ways to supply regulated 5V to this dev board. (N.B. There is no power supply regulator onboard - a regulated 5v supply must be used)
-   - via a USB (Mini USB cable type) connector. 
-   - Via the "Pick it" Device 
-
-
+# Other places to get information
+ - GettingBlinky with assmebler
+   - https://leap.tardate.com/pic/gettingblinky/
+ - Watchdog info   
+   - https://www.youtube.com/watch?v=tPUwuX4tHOw 
 
