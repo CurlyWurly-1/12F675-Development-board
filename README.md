@@ -6,7 +6,7 @@ This repository is for collecting programs written in "C" that can be used with 
 
 N.B. When you buy this board, you only get what you see in the picture - a development board with a 12F675 pic chip already installed and a USB (power only) supply cable that connects to this board via its barrel connector. 
 
-To program the installed pic chip using this board, you also need a "pickit 3" device which connects to the ISCP interface (white houising) via a 6 wire dupont harness. See below for more information about this. 
+To program the installed pic chip using this board, you also need a "pickit 3" device which connects to the ISCP interface (white housing) via a 6 wire dupont harness. See below for more information about this. 
 
 <img src="images/12f675 board.jpg" alt="Dev board"/>
 
@@ -32,7 +32,7 @@ The "Pickit 3" device is connected to your PC via a USB connector and to the dev
 
 <img src="images/pickit3.jpg" alt="Pickit 3"/>
 
-# Other variants opf this pic with the same pinout (6 GPIO pins)
+# Other variants of this pic with the same pinout (6 GPIO pins)
 - 12F675  - internal clock of  4 MHz
 - 12F683  - Internal clock of 16 MHz
 - 12F1840 - 4K words and internal clock of 32 MHz
