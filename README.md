@@ -21,9 +21,10 @@ Please note:
 
 
 # Development Board Schematic information
-The Schematic for this board is as below. as well as a socket for the pic chip, the board also has the following components:
+The Schematic for this board is pictured below and it has the following components:
  - Power switch      - This on/off power switch is connected to the barrel connector 
  - "Poweron" LED     - It is always on when power is applied to the board (annoyingly bright !!)
+ - PIC Socket        - There should be an 8 pin 12F675 chip installed in this socket
  - Two LEDS          - Linked via yellow jumpers to pins GP0, GP1
  - Three switches    - Linked via yellow jumpers to pins GP2, GP3, GP5 (N.B. GP3 is the MCLR pin - To avoid hassles, only use it as an input pin)
  - Variable resistor - Linked via yellow jumper  to pin  GP4  
