@@ -24,6 +24,11 @@ If you want to program the board as per these examples, you will also need a "Pi
  - main_03_timer 	 	 
  - main_04_ADC 
 
+# Other places to get information
+ - GettingBlinky with assmebler
+   - https://leap.tardate.com/pic/gettingblinky/
+ - 
+
 
 # How to get familiar with this board
 - View Julian's excellent series of videos for a great intro to the board and also about a fix you should do - about cutting a track on the board and soldering a connecting wire in its place underneat hteh board
