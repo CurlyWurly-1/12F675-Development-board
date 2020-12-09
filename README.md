@@ -14,7 +14,7 @@ Please note:
  - To program the installed pic chip using this board, you also need a "pickit 3" device which connects to the boards white housing ISCP interface via a 6 wire dupont harness. (See below for more information about this) 
  - There are 2 ways to supply regulated 5V to this dev board. (N.B. There is no power supply regulator onboard - do not exceed 5V)
    - via the supplied USB to Barrel connector. 
-   - Via the "Pick it 3" Device  - Try to avoid using this technique - the voltage supplied from the Pickit 3 can be lower than 5V and the MPLAB X IDE detects and reports this as an error. This seems to happen more with "Pickit 3" clones. 
+   - Via the "Pick it 3" Device  - Try to avoid using this technique - The voltage supplied from the Pickit 3 can be lower than 5V and the MPLAB X IDE detects and reports this as an error. This seems to happen more with "Pickit 3" clones. 
 
 
 <img src="images/12f675 board.jpg" alt="Dev board"/>
