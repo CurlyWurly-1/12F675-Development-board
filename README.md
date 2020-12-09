@@ -10,7 +10,7 @@ Please note:
    - main_02_Interupt 	 
    - main_03_timer 	 	 
    - main_04_ADC 
-- When you buy this board, you only get what you see in the picture below - a blue coloured development board with a 12F675 pic chip already installed and a USB (power only) supply cable that connects to the board's black barrel connector. 
+- When you buy this board, you only get what you see in the picture below - a blue coloured development board with a 12F675 pic chip already installed and a black USB (power only) supply cable that connects to the board's black barrel connector. 
  - To program the installed pic chip using this board, you also need a "pickit 3" device which connects to the boards white housing ISCP interface via a 6 wire dupont harness. (See below for more information about this) 
  - There are 2 ways to supply regulated 5V to this dev board. (N.B. There is no power supply regulator onboard - do not exceed 5V)
    - via the supplied USB to Barrel connector. 
@@ -56,8 +56,8 @@ The "Pickit 3" device connects to your PC via a (blue) USB cable and to the deve
 The above videos cover this - alternatively, follow the steps below
 - On your PC, 
   - Download and install both the MPLAB X IDE and XC8 compiler from the MPLAB website (It is free) 
-  - Plug in the USB power cable and connect it to your 12F675 development board (This cable is only used for powering the board) 
-  - Plug in the blue USB cable of Pick-it" device and ensure the 6 wire harness leads are inserted the right way round into the board (N.B. The pin marked VPP on the board should connect to the pin marked with a white triangle on the "Pick-it" device  
+  - Plug in the black USB power cable and connect it to your 12F675 development board (This cable is only used for powering the board) 
+  - Plug in the blue USB cable of Pick-it" device and ensure that the 6 wire harness leads are inserted into the board the right way round  (N.B. The pin marked VPP on the board should connect to the pin marked with a white triangle on the "Pick-it" device  
 
 
 # How to Program the pic12f675 using the development board
