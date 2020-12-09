@@ -1,15 +1,17 @@
 # 12F675-Development-board
 
+The PIC12G675 is an 8 pin PIC microcontroller with 6 GPIO pins.  
+
 This repository is for collecting programs written in "C" that can be used with the PIC12F675 development board as pictured below.
 
 N.B. When you buy this board, you only get what you see in the picture - a development board with a 12F675 pic chip already installed and a USB (power only) supply cable that connects to this board via its barrel connector. 
 
-To program the installed pic chip using this board, you alson need a "pickit 3" device which connects to the ISCP interface (white houising) via 6 wires. See below for more information about how to program. 
+To program the installed pic chip using this board, you also need a "pickit 3" device which connects to the ISCP interface (white houising) via a 6 wire dupont harness. See below for more information about this. 
 
 <img src="images/12f675 board.jpg" alt="Dev board"/>
 
 
-The Schematic for this board is as below. as well as a socket for the pic chip, the board also has
+The Schematic for this board is as below. as well as a socket for the pic chip, the board also has the following components:
  - Power switch      - This on/off power switch is connected to the barrel connector 
  - "Poweron" LED     - It is always on when power is applied to the board (annoyingly bright !!)
  - Two LEDS          - Linked via yellow jumpers to pins GP0, GP1
@@ -19,7 +21,7 @@ The Schematic for this board is as below. as well as a socket for the pic chip, 
 
 N.B. If you remove a jumper, it disconnects the pic's GPIO pin from its associated LED/switch/variable resistor. This means you can connect any of the 6 exposed header pins to whatever you want via a standard female dupoint wire. 
 
-N.B. The "VDD" and "Ground" pin twins are permanently connected by a track under the board - so these 2 jumpers are effectively spares  - You can remove them with no ill effect, with the now exposed header pins being available for supplying 5V or 0V to whatever you want to connect them to
+N.B. The other 2 pins are for "VDD" and "Ground". These pin twins are permanently connected by a track under the board - so these 2 jumpers are effectively spares - You can remove these jumpers with no ill effect, with the now exposed header pins being available for supplying 5V or 0V to whatever you want to connect them to
 
 <img src="images/12f675 schematic.jpg" alt="Schematic"/>
 
