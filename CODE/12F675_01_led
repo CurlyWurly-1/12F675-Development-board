@@ -1,13 +1,13 @@
 //This program blinks 2 LEDS
 // N.B. If the "REST" button (LEFT)   is pressed and held down, the "on" time is shortened
 
-// The 6 pins as as follows
-// - GPIO0 - "LED1"     - Output   
-// - GPIO1 - "LED2"     - Output  
-// - GPIO2 - "KEY1"     - Input  - Right  button (INTERRUPT)
-// - GPIO3 - "REST"     - Input  - Left   button - MUST ALWAYS BE AN INPUT - MCLR pin
-// - GPIO4 - "ledx/ADC" - OUTPUT - Spare pin - the link is removed so that it is disconnected to Variable resistor 
-// - GPIO5 - "KEY2"     - "KEY2" - Middle button - (Go to Sleep)   
+// The default connections for the 6 pins is as follows 
+// - GPIO0 - "LED1" - Output   
+// - GPIO1 - "LED2" - Output  
+// - GPIO2 - "KEY1" - Input - Right  button (if button not closed to ground, pin is pulled high by 10K resistor) 
+// - GPIO3 - "REST" - Input - Left   button (if button not closed to ground, pin is pulled high by 10K resistor - N.B. This is the MCLR pin - SHOULD ALWAYS BE AN INPUT)
+// - GPIO4 - "ADC"  - Input - Variable Resistor 
+// - GPIO5 - "KEY2" - Input - Middle button (if button not closed to ground, pin is pulled high by 10K resistor)   
 
 #pragma config FOSC  = INTRCIO  // Oscillator Selection bits (INTOSC oscillator: I/O function on GP4/OSC2/CLKOUT pin, I/O function on GP5/OSC1/CLKIN)
 #pragma config WDTE  = OFF      // Watchdog Timer Enable bit (WDT disabled)
@@ -18,92 +18,35 @@
 #pragma config CPD   = OFF      // Data Code Protection bit (Data memory code protection is disabled)
 
 
-
 #define _XTAL_FREQ 4000000
 #include <xc.h>
 
- void __interrupt() interupt1 (void);
-
- void __interrupt() interupt1 (void) {
-      if(INTF){	          	//check external interrupt flag bit       
-           int a;        
-           for(a=0; a<20; a++)           {             
-//                GPIO4=GPIO4^1;             
-//                __delay_ms(30);             
-                GPIO4=0;             
-                __delay_ms(30);  
-                GPIO4=1;             
-                __delay_ms(30);  
-           }        
-      INTF=0;        
-      };  
- }; 
-
 int main() {
 
-    GIE=1; //global interrupts enable   // these 4 bits are of INTCON
-    INTEDG=0;  //falling edge
-    INTE=1; //enable int0
-    //PEIE=1; //peripheral interrupts enable       
-
-    // Set the 6 pins as input or output (MSB)
+    // Configure the 6 pins (MSB)
     // where "1=Input" and "0=Output"    
-    TRISIO = 0b101100;    
-//    TRISIO0=0; //led1 out
-//    TRISIO5=0; //led2 out
+    // e.g. This command configures GPIO0 and GPIO1 as outputs
+    TRISIO = 0b111100;
 
-    // Set low values to all pins 
-    GPIO = 0b111111;      
-    //    GPIO5=0;  //led off at main
-    
-    ANS2=0;//Setting INT(GPIO2) as special function pin,As per note given for setting ansel register
-
-
-
-
-
-    // Make all pins to be digital only (no ADC) 
- //   ANSEL = 0b000000;       //adc off - digital in/out   
-//    CMCON = 7;              //turns comparators off       
-
-//    OPTION = 0b01000111;       
-
-
-//    CMCON  = 7; //turns comparators off       
-//    INTCON = 0b1001000;		//external interrupt enabled on GPIO2   
-//    OPTION_REGbits.INTEDG = 1; //Interrupt on rising edge of INT pin
-//    INTCONbits.INTF = 0; //CLEAR INTERRUPT FLAG BIT
-//    INTE = 1;
-//    GIE = 1;
+    // Set High values to all pins (leds and switches are off) 
+    GPIO = 0b111111;
 
     while (1) {
 
-        // Set High values to the 2 output pins (switches the 2 LEDS off))
-//        GPIO = 0b010011;
-        GPIO0 = 1;
-        GPIO1 = 1;
-        // Check if REST Switch is pressed and held down
-        // by reading Pin 4 (GPIO3)
-        // If the "REST" Switch is pressed, pin4 is pulled low to ground
-        // otherwise it is normally pulled high by a 10K resistor
+        // If the "REST" Switch is pressed, GPIO3 (pin4) is pulled low by the button closing the contact to ground
+        // Check if "REST" Switch is pressed and held down
         if (GPIO3 == 0) {
-            __delay_ms(100); // 1500ms
+            __delay_ms(200); // 100ms
         } else {
-            __delay_ms(400); // 500ms  
+            __delay_ms(500); // 500ms  
         }
 
         // Turn on LEDs by outputting a LOW     
-//        GPIO = 0;
+        // GPIO = 0;
         GPIO0 = 0;
         GPIO1 = 0;
-        // This determines the time while LED is off 
-        __delay_ms(100); // 500ms
-
-
-        if (GPIO2 == 0) {
-//            SLEEP();
-        };
-
+        // This determines the time while LED is on 
+        __delay_ms(100); // 100ms
 
     }
 
