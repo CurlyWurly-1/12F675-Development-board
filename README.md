@@ -18,12 +18,14 @@ The Schematic for this board is as below. as well as a socket for the pic chip, 
  - ICSP pins         - White housing of 6 pins - used for the programming interface
 
 N.B. If you remove a jumper, it disconnects the pic's GPIO pin from its associated LED/switch/variable resistor. This means you can connect any of the 6 exposed header pins to whatever you want via a standard female dupoint wire. 
-N.B. The "VDD" and "Ground" pin twins are permanently connected by a track under the board - These jumpers are efectively spares and you can remove them with the now exposed header pins being availble for supplying 5V or 0V to whatever you want to connect them to
+N.B. The "VDD" and "Ground" pin twins are permanently connected by a track under the board - so these 2 jumpers are effectively spares  - You can remove them with no ill effect, with the now exposed header pins being available for supplying 5V or 0V to whatever you want to connect them to
 
 <img src="images/12f675 schematic.jpg" alt="Schematic"/>
 
 
-If you want to program the board as per these examples, you will also need a "Pickit" device like the one you see below - make sure you buy one at the same time as you buy the Development board. N.B. The clones also seem to work. This device connects to your PC via a USB connector and to the board via the 6 pin jtag connector
+If you want to program the board as per these examples, you will also need a "Pickit 3" device like the one you see below - If you haven't already got one, make sure you buy it at the same time as you buy the Development board. N.B. The clones seem to work OK. 
+
+The "Pickit 3" device is connected to your PC via a USB connector and to the development board's 6 pin connector (White housing) via a 6 wire dupoint female to female harness. You must use the wiring harness because you can't directly attached the "Pickit 3" to the board - the white housing prevents this.
 
 <img src="images/pickit3.jpg" alt="Pickit 3"/>
 
