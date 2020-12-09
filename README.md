@@ -57,7 +57,7 @@ The above videos cover this - alternatively, follow the steps below
 - On your PC, 
   - Download and install both the MPLAB X IDE and XC8 compiler from the MPLAB website (It is free) 
   - Plug in the black USB power cable to your PC and connect it to your 12F675 development board via the board's barrel connector (This cable is only used for powering the board) 
-  - Connect the "Pick-it 3" device both to your PC via the blus USB cable and also to the 6 pins of your development board's white housing using the 6 wire harness. Ensure that the 6 pins are orientated correctly. The pin marked VPP on the board should connect to the pin marked with a white triangle on the "Pick-it 3" device  
+  - Connect the "Pick-it 3" device both to your PC via the blue USB cable and also to your development board's white housing socket via the 6 wire harness. Ensure that the 6 pins are orientated correctly. The pin marked VPP on the board should connect to the pin marked with a white triangle on the "Pick-it 3" device  
 
 
 # How to Program the pic12f675 using the development board
