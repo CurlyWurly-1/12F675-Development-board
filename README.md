@@ -1,23 +1,17 @@
 # 12F675-Development-board
 
+This repository is for collecting the C programs that can be used with the PIC12F675 development board as seen below.
+
 <img src="images/12f675 board.jpg" alt="Dev board"/>
+
+The Schematic for this board is as below - The board has 2 LEDS and 3 swtiches that are linked to the PIC12F675 via jumpers. Remove the jumper and you can use the GPIO pin of the pic for other purposes using standard Dupoint connector wires
+N.B. The VDD and Ground pin twins are permanently connected in the board - you can remove them
 <img src="images/12f675 schematic.jpg" alt="Schematic"/>
 
-This repository is for collecting the C programs that can be used with the above pictured PIC12F675 development board.
-The following programs can be seen in folder "CODE" - They have been tested with the latest MPLAB X IDE using the XC8 Compiler (Dec 2020)
 
-- main_01_LED  
-- main_02_Interupt 	 
-- main_03_timer 	 	 
-- main_04_ADC 
-
-
-
-N.B. When you buy this board, you only get the board, the installed pic chip and a USB power supply cable.
+When you buy this board, you only get the board, the installed pic chip and a USB power supply cable.
 If you want to program the board as per these examples, you will also need a "Pickit" device like the one you see below - make sure you buy one at the same time as you buy the Development board. N.B. The clones also seem to work
-
-
-
+<img src="images/pickit3.jpg" alt="Pickit 3"/>
 
 
 # List of programs in folder CODE
