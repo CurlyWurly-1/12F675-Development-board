@@ -42,15 +42,8 @@ The "Pickit 3" device is connected to your PC via a USB connector and to the dev
 <img src="images/pickit3.jpg" alt="Pickit 3"/>
 
 
-# List of programs in folder CODE
- - main_01_LED  
- - main_02_Interupt 	 
- - main_03_timer 	 	 
- - main_04_ADC 
-
-
 # How to get familiar with this board
-- View Julian's excellent series of videos for a great intro to the board and also about a fix you should do - about cutting a track on the board and soldering a connecting wire in its place underneat hteh board
+- View Julian's excellent series of videos for a great introduction to this development board, and also about a fix you should do. Ideally, you should cut a track on the board and reconnect the track by soldering a connecting wire underneath the board
   - PIC Assembly Language Tutorials: #0 - Shopping List & Mods
     - https://www.youtube.com/watch?v=p2rZwR9oM_k
   - PIC Assembly Language Tutorial: #1 - Config and Clock
