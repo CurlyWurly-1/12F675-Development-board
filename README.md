@@ -1,16 +1,20 @@
 # 12F675-Development-board
 
-This repository is for collecting the C programs that can be used with the PIC12F675 development board as seen below.
+This repository is for collecting the C programs that can be used with the PIC12F675 development board as pictured below.
+N.B. When you buy this board, you only get the board, the installed pic chip and a USB power supply cable that connects to this board via its barrel connector.
 
 <img src="images/12f675 board.jpg" alt="Dev board"/>
 
-The Schematic for this board is as below - The board has 2 LEDS and 3 swtiches that are linked to the PIC12F675 via jumpers. Remove the jumper and you can use the GPIO pin of the pic for other purposes using standard Dupoint connector wires
-N.B. The VDD and Ground pin twins are permanently connected in the board - you can remove them
+
+The Schematic for this board is as below.
+The board has two LEDS and three switches which can be linked to their designated PIC12F675 GPIO pins via a yellow jumper (see schematic for what goes where). If you remove the jumper, you disconnect the switch or LED from the pic GPIO pin, and alternatively, you can connect the GPIO pin to whetever you want via a standard female dupoint wire attached to the exposed header pin. 
+N.B. The "VDD" and "Ground" pin twins are permanently connected by a track under the board - you can remove their jumpers and use the header pins for supplying 5V or 0V to your externally connected devices
+
 <img src="images/12f675 schematic.jpg" alt="Schematic"/>
 
 
-When you buy this board, you only get the board, the installed pic chip and a USB power supply cable.
-If you want to program the board as per these examples, you will also need a "Pickit" device like the one you see below - make sure you buy one at the same time as you buy the Development board. N.B. The clones also seem to work
+If you want to program the board as per these examples, you will also need a "Pickit" device like the one you see below - make sure you buy one at the same time as you buy the Development board. N.B. The clones also seem to work. This device connects to your PC via a USB connector and to the board via the 6 pin jtag connector
+
 <img src="images/pickit3.jpg" alt="Pickit 3"/>
 
 
@@ -21,16 +25,17 @@ If you want to program the board as per these examples, you will also need a "Pi
  - main_04_ADC 
 
 
-# How to get setup with this board
-- View Julian's excellent series of videos
+# How to get familiar with this board
+- View Julian's excellent series of videos for a great intro to the board and also about a fix you should do - about cutting a track on the board and soldering a connecting wire in its place underneat hteh board
   - PIC Assembly Language Tutorials: #0 - Shopping List & Mods
     - https://www.youtube.com/watch?v=p2rZwR9oM_k
   - PIC Assembly Language Tutorial: #1 - Config and Clock
     - https://www.youtube.com/watch?v=491StrMyqa4&t=1392s
   - PIC Assembly Language Update: #1.1 - PCB schematic
     - https://www.youtube.com/watch?v=TneWtGyar6M&t=192s
-    
-  - There is a fix that you need to do to the board, please cut the track and solder a wire as per follow 
+
+# How to set up and install the software and componenets
+The above videos cover this - alternatively, follow the steps below
 - On your PC, 
   - Download and install both the MPLAB X IDE and XC8 compiler from the MPLAB website (It is free) 
   - Plug in the USB power cable and connect it to your 12F675 development board (This cable is only used for powering the board) 
@@ -47,9 +52,6 @@ If you want to program the board as per these examples, you will also need a "Pi
   - Press "Make and Program" to program the PIC using a Pickit 3 programmer
   - Enjoy your programmed device
 
-
-# Development Board schematics
-<img src="BK300_Layout.jpg" alt="BK300 Layout"/>
 
 
 # Important points
