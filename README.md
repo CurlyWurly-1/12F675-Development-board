@@ -63,10 +63,10 @@ The above videos cover this - alternatively, follow the steps below
 # How to Program the pic12f675 using the development board
 - Ensure you are setup as per the previous section
 - In this GITHUB repository
-  - Look in folder "CODE" and decide which of the programs you want to program into your PIC12F675 e.g. "main_01_LED"
+  - Look in folder "CODE" and decide which of the programs you want to program into your PIC12F675 e.g. "main_01_LED". You will be copying the code from this file
 - On your PC, execute MPLAB X and:
-  - Create a new standalone project for PIC12F675 naming it the same as the program you want to use e.g. "main_01_LED". As part of this process, you select the XC8 compiler and the "Pick-it" programming device that is a attached 
-  - Highlight section called "Source Files"and right click to create a new "Main C" file. Use a name simliar to the project above e.g. "main_01_LED.c"  
+  - Create a new standalone project for PIC12F675 and name it the same as the program you want to use e.g. "main_01_LED". As part of this process, you select the XC8 compiler and the "Pickit 3" programming device that you have already attached to your PC as per the previous section 
+  - Highlight the section called "Source Files"and right click to create a new "Main C" file. Use a name simliar to the project above e.g. "main_01_LED.c"  
   - Copy and paste the code into this new "Main" file and save it (The code comes from the Github Repository you looked at previously)
   - Press "Make and Program" to program the PIC using a Pickit 3 programmer
   - Enjoy your programmed device
