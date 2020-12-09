@@ -28,17 +28,17 @@ int main() {
     // e.g. This command configures GPIO0 and GPIO1 as outputs
     TRISIO = 0b111100;
 
-    // Set High values to all pins (leds and switches are off) 
-    GPIO = 0b111111;
-
     while (1) {
 
-        // If the "REST" Switch is pressed, GPIO3 (pin4) is pulled low by the button closing the contact to ground
+        // Set High values to all pins (leds and switches are off) 
+        GPIO = 0b111111;        
+        
+        // If the "REST" Switch is pressed, GPIO3 is pulled low to ground by the button closing a contact
         // Check if "REST" Switch is pressed and held down
         if (GPIO3 == 0) {
-            __delay_ms(200); // 100ms
+            __delay_ms(150); // 150ms
         } else {
-            __delay_ms(500); // 500ms  
+            __delay_ms(300); // 300ms  
         }
 
         // Turn on LEDs by outputting a LOW     
@@ -46,7 +46,7 @@ int main() {
         GPIO0 = 0;
         GPIO1 = 0;
         // This determines the time while LED is on 
-        __delay_ms(100); // 100ms
+        __delay_ms(75); // 75ms
 
     }
 
