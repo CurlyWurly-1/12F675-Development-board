@@ -1,8 +1,12 @@
 # 12F675-Development-board
 
-The PIC12F675 is an 8 pin PIC microcontroller with 6 GPIO pins.  
+The PIC12F675 is an 8 pin PIC microcontroller with 6 GPIO pins.  It is over 15 years old but can still be purchased.
 
 This repository is for collecting "C" programs (XC8) that can be used to program the PIC12F675 development board as seen in the picture below (via the MPLAB X IDE)   
+
+N.B. The modern "drop in" replacement for this chip is the PIC12F1501 - this is easier to program because it has MCC support within the MPLAB X IDE 
+
+
 
 Please note:
  - The following "C" programs are stored in folder "CODE" of this repository  
@@ -73,9 +77,10 @@ The above videos cover this - alternatively, follow the steps below
 
 
 # Other variants of this pic with the same pinout (6 GPIO pins)
-- 12F675  - internal clock of  4 MHz
-- 12F683  - Internal clock of 16 MHz
-- 12F1840 - 4K words and internal clock of 32 MHz
+- 12F675     - internal clock of  4 MHz
+- 12F683     - Internal clock of 16 MHz
+- 12F1840    - 4K words and internal clock of 32 MHz
+- PIC12F1501 - Modern replacement with better specs - use this for new projects
 
 # Other places to get information
  - GettingBlinky with assmebler
