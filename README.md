@@ -10,10 +10,10 @@ N.B. The modern "drop in" replacement for this chip is the PIC12F1501 - this is 
 
 Please note:
  - The following "C" programs are stored in folder "CODE" of this repository  
-   - main_12F675_01_LED  
-   - main_12F675_02_Interupt 	 
-   - main_12F675_03_timer 	 	 
-   - main_12F675_04_ADC 
+   - 12F675_01_LED  
+   - 12F675_02_Interupt 	 
+   - 12F675_03_timer 	 	 
+   - 12F675_04_ADC 
 - When you buy this board, you only get what you see in the picture below - a blue coloured development board with a 12F675 pic chip already installed and a black USB (power only) supply cable that connects to the board's black barrel connector. 
  - To program the installed pic chip using this board, you also need a "pickit 3" device which connects to the boards white housing ISCP interface via a 6 wire dupont harness. (See below for more information about this) 
  - There are 2 ways to supply regulated 5V to this dev board. (N.B. There is no power supply regulator onboard - do not exceed 5V)
@@ -67,12 +67,12 @@ The above videos cover this - alternatively, follow the steps below
 # How to Program the pic12f675 using the development board
 - Ensure you are setup as per the previous section
 - In this GITHUB repository
-  - Look in folder "CODE" and decide which of the programs you want to program into your PIC12F675 e.g. "main_01_LED". You will be copying the code from this file
+  - Look in folder "CODE" and decide which of the programs you want to program into your PIC12F675 e.g. "12F675_01_LED". You will be copying the code from this file later on 
 - On your PC, execute MPLAB X and:
-  - Create a new standalone project for PIC12F675 and name it the same as the program you want to use e.g. "main_01_LED". As part of this process, you select the XC8 compiler and the "Pickit 3" programming device that you have already attached to your PC as per the previous section 
-  - Highlight the section called "Source Files"and right click to create a new "Main C" file. Use a name simliar to the project above e.g. "main_01_LED.c"  
-  - Copy and paste the code into this new "Main" file and save it (The code comes from the Github Repository you looked at previously)
-  - Press "Make and Program" to program the PIC using a Pickit 3 programmer
+  - Create a new standalone project and name it the same as the program you want to use e.g. "12F675_01_LED". As part of this process, you select the XC8 compiler and the "Pickit 3" programming device that you have already attached to your PC as per the previous section 
+  - Highlight the section called "Source Files"and right click to create a new "Main C" file. Just use a name of "main.c"  
+  - Copy the code from file "12F675_01_LED" and paste into this new "main.c" file and save it
+  - Press "Make and Program" to program the PIC using a Pickit 3 programmer (make sure the black usb power cable is attached and you have pressed the power switch)
   - Enjoy your programmed device
 
 
