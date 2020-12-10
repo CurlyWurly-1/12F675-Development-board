@@ -1,1 +1,81 @@
-*** Coming Soon ***
+// This program reads the ADC pin (GPIO4) and displays the value in binary on the 2 LEDS (LED1 and LED2) 
+
+/////////////////////////// MAKEUP OF BOARD //////////////////////////////////
+// The default connections for the 6 pins is as follows (if you leave the links in)
+// - GPIO0 - "LED1" - Output   
+// - GPIO1 - "LED2" - Output  
+// - GPIO2 - "KEY1" - Input - Right  button (if button not closed to ground, pin is pulled high by 10K resistor) 
+// - GPIO3 - "REST" - Input - Left   button (if button not closed to ground, pin is pulled high by 10K resistor - N.B. This is the MCLR pin - SHOULD ALWAYS BE AN INPUT)
+// - GPIO4 - "ADC"  - Input - Variable Resistor 
+// - GPIO5 - "KEY2" - Input - Middle button (if button not closed to ground, pin is pulled high by 10K resistor)   
+// When a Switch is pressed, it grounds the pin (the pin is normally kept high by a 10K resistor to 5V)
+// One leg of the LEDS is connected to 5V. This means that to make the LED light up, you have send 0V to its associated pin 
+/////////////////////////// MAKEUP OF BOARD //////////////////////////////////
+
+
+// This is the Configuration section
+#pragma config FOSC  = INTRCIO  // Oscillator Selection bits (INTOSC oscillator: I/O function on GP4/OSC2/CLKOUT pin, I/O function on GP5/OSC1/CLKIN)
+#pragma config WDTE  = OFF      // Watchdog Timer Enable bit (WDT disabled)
+#pragma config PWRTE = OFF      // Power-Up Timer Enable bit (PWRT disabled)
+#pragma config MCLRE = OFF      // GP3/MCLR pin function select (GP3/MCLR pin function is digital I/O, MCLR internally tied to VDD)
+#pragma config BOREN = OFF      // Brown-out Detect Enable bit (BOD disabled)
+#pragma config CP    = OFF      // Code Protection bit (Program Memory code protection is disabled)
+#pragma config CPD   = OFF      // Data Code Protection bit (Data memory code protection is disabled)
+#define _XTAL_FREQ 4000000
+#include <xc.h>
+
+ unsigned int adc_val;          // Variable to store our ADC result
+
+//***************************************************************
+//* Main
+//***************************************************************
+void main()
+{
+
+ // Initialization
+    TRISIO              = 0b111111;     // First line - always set all pins as inputs !!!  
+    CMCON               = 7;            // Turn comparators off  (The default is that they are on)
+    ANSEL               = 0b00001000;   // Select GPIO4 as analog input
+    ADCON0bits.ADFM     = 0;            // Left justified - ADFM = 0 - use ADRESH only (256)
+    ADCON0bits.VCFG     = 0;            // Vdd is the +ve reference
+    ANSELbits.ADCS      = 0b101;        // 101 = Fosc/16 4 usec at 4MHz since TAD = 1.6 usec
+    ADCON0bits.ADON     = 1;            // Turn on the ADC
+    GPIO                = 0b000011;     // Set LEDS off
+    TRISIO              = 0b111100;     // TRISIO direction as output
+
+// Main Loop
+    while(1)
+    {
+        ADCON0bits.CHS = 0b11;          // select analog input, AN3 (GPIO4))
+        ADCON0bits.GO  = 1;             // start the conversion
+        while(ADCON0bits.GO == 1){};    // wait for the conversion to end
+        adc_val = 0x0000;
+        adc_val = (ADRESH<<8)+ADRESL;
+
+        // Display the ADC value in 2 bits using LED1 and LED2  
+        if (adc_val > 0) //SECTION 0
+        {
+            GPIO0 = 1;
+            GPIO1 = 1;
+        } 
+        if (adc_val > 20400) //204
+        {
+            GPIO0 = 0;
+            GPIO1 = 1;
+        }
+        if (adc_val > 40800) //204 + 204
+        {
+            GPIO0 = 1;
+            GPIO1 = 0;
+        } 
+        if (adc_val > 61200) //204 + 204  + 204
+        {
+            GPIO0 = 0;
+            GPIO1 = 0;
+        }  
+        
+        __delay_ms(10); //ADC refresh rate
+
+
+            }
+    }
