@@ -1,14 +1,20 @@
-//This program blinks 2 LEDS
+//This program blinks the 2 LEDS (LED1 and LED2))
 // N.B. If the "REST" button (LEFT)   is pressed and held down, the "on" time is shortened
 
-// The default connections for the 6 pins is as follows 
+/////////////////////////// MAKEUP OF BOARD //////////////////////////////////
+// The default connections for the 6 pins is as follows (if you leave the links in)
 // - GPIO0 - "LED1" - Output   
 // - GPIO1 - "LED2" - Output  
 // - GPIO2 - "KEY1" - Input - Right  button (if button not closed to ground, pin is pulled high by 10K resistor) 
 // - GPIO3 - "REST" - Input - Left   button (if button not closed to ground, pin is pulled high by 10K resistor - N.B. This is the MCLR pin - SHOULD ALWAYS BE AN INPUT)
 // - GPIO4 - "ADC"  - Input - Variable Resistor 
 // - GPIO5 - "KEY2" - Input - Middle button (if button not closed to ground, pin is pulled high by 10K resistor)   
+// When a Switch is pressed, it grounds the pin (the pin is normally kept high by a 10K resistor to 5V)
+// One leg of the LEDS is connected to 5V. This means that to make the LED light up, you have send 0V to its associated pin 
+/////////////////////////// MAKEUP OF BOARD //////////////////////////////////
 
+
+// This is the Configuration section
 #pragma config FOSC  = INTRCIO  // Oscillator Selection bits (INTOSC oscillator: I/O function on GP4/OSC2/CLKOUT pin, I/O function on GP5/OSC1/CLKIN)
 #pragma config WDTE  = OFF      // Watchdog Timer Enable bit (WDT disabled)
 #pragma config PWRTE = OFF      // Power-Up Timer Enable bit (PWRT disabled)
@@ -16,25 +22,26 @@
 #pragma config BOREN = OFF      // Brown-out Detect Enable bit (BOD disabled)
 #pragma config CP    = OFF      // Code Protection bit (Program Memory code protection is disabled)
 #pragma config CPD   = OFF      // Data Code Protection bit (Data memory code protection is disabled)
-
-
 #define _XTAL_FREQ 4000000
 #include <xc.h>
 
+//***************************************************************
+//* Main
+//***************************************************************
 int main() {
 
-    // Configure the 6 pins (MSB)
-    // where "1=Input" and "0=Output"    
-    // e.g. This command configures GPIO0 and GPIO1 as outputs
-    TRISIO = 0b111100;
-
+    TRISIO = 0b111100;      // Configure GPIO0 and GPIO1 as outputs and the other 4 pins as inputs 
+    CMCON = 7;              // Configure all GPIO pins to NOT be comparators  (The default is that they are)
+    ANSEL = 0;              // Configure all pins to be digital only (i.e. they are NOT  A to D)
+    
+// MAIN LOOP 
     while (1) {
 
-        // Set High values to all pins (leds and switches are off) 
-        GPIO = 0b111111;        
+        GPIO0 = 1;          // Set LED1 to High (not lit)        
+        GPIO1 = 1;          // Set LED2 to High (not lit)          
+       // GPIO = 0b111100;  // This is an alternative way to set values to all 6 pins
         
-        // If the "REST" Switch is pressed, GPIO3 is pulled low to ground by the button closing a contact
-        // Check if "REST" Switch is pressed and held down
+        // Check if "REST" Switch is pressed and held down - if so, shorten the delay
         if (GPIO3 == 0) {
             __delay_ms(150); // 150ms
         } else {
@@ -42,9 +49,10 @@ int main() {
         }
 
         // Turn on LEDs by outputting a LOW     
-        // GPIO = 0;
         GPIO0 = 0;
         GPIO1 = 0;
+        // GPIO = 0;  //  This is an alternative way to set a zero value to all 6 pins
+
         // This determines the time while LED is on 
         __delay_ms(75); // 75ms
 
