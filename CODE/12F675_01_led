@@ -1,5 +1,5 @@
-//This program blinks the 2 LEDS (LED1 and LED2))
-// N.B. If the "REST" button (LEFT)   is pressed and held down, the "on" time is shortened
+// This program blinks the 2 LEDS (LED1 and LED2) 
+// If the "REST" (left) button is pressed and held down, the LED "on" time is shortened
 
 /////////////////////////// MAKEUP OF BOARD //////////////////////////////////
 // The default connections for the 6 pins is as follows (if you leave the links in)
@@ -30,32 +30,33 @@
 //***************************************************************
 int main() {
 
-    TRISIO = 0b111100;      // Configure GPIO0 and GPIO1 as outputs and the other 4 pins as inputs 
-    CMCON = 7;              // Configure all GPIO pins to NOT be comparators  (The default is that they are)
-    ANSEL = 0;              // Configure all pins to be digital only (i.e. they are NOT  A to D)
+// Initialisation
+    TRISIO  = 0b111111;         // First line - always set all pins as inputs !!!      
+    CMCON   = 7;                // Turn comparators off  (The default is that they are on)
+    ANSEL   = 0;                // Switch off ADC (Configure all pins to be digital only)
+    GPIO0   = 1;                // Set LED1 to High (not lit)        
+    GPIO1   = 1;                // Set LED2 to High (not lit)       
+    TRISIO  = 0b111100;         // Configure GPIO0 and GPIO1 as outputs and the other 4 pins as inputs 
+
     
 // MAIN LOOP 
     while (1) {
 
-        GPIO0 = 1;          // Set LED1 to High (not lit)        
-        GPIO1 = 1;          // Set LED2 to High (not lit)          
-       // GPIO = 0b111100;  // This is an alternative way to set values to all 6 pins
+        GPIO0 = 1;              // Switch "LED1" off     
+        GPIO1 = 1;              // Switch "LED2" off              
+       // GPIO = 0b111100;      // This is an alternative way to set values to all 6 pins
         
         // Check if "REST" Switch is pressed and held down - if so, shorten the delay
         if (GPIO3 == 0) {
-            __delay_ms(150); // 150ms
+            __delay_ms(100);    // This determines the time while LED is on 
         } else {
-            __delay_ms(300); // 300ms  
+            __delay_ms(300);    // This determines the time while LED is on   
         }
 
-        // Turn on LEDs by outputting a LOW     
-        GPIO0 = 0;
-        GPIO1 = 0;
-        // GPIO = 0;  //  This is an alternative way to set a zero value to all 6 pins
-
-        // This determines the time while LED is on 
-        __delay_ms(75); // 75ms
-
+        GPIO0 = 0;              // Switch "LED1" ON     
+        GPIO1 = 0;              // Switch "LED2" ON     
+        // GPIO = 0;            // This is an alternative way to set a zero value to all 6 pins
+        __delay_ms(75);         // This determines the time while LED is on 
     }
 
     return 0;
