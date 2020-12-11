@@ -35,10 +35,11 @@ void main()
  // Initialization
     TRISIO              = 0b111111;     // First line - always set all pins as inputs !!!  
     CMCON               = 7;            // Turn comparators off  (The default is that they are on)
-    ANSEL               = 0b00001000;   // Select GPIO4 as analogue input
-    ADCON0bits.ADFM     = 1;            // Right justified - Use both ADRESH and ADRESL
-    ADCON0bits.VCFG     = 0;            // Vdd is the +ve reference
-    ANSELbits.ADCS      = 0b101;        // 101 = Fosc/16 4 usec at 4MHz since TAD = 1.6 usec
+    ANSELbits.ANS       = 0b1000;       // Set GPIO4 (AN3) to be an analogue input capable pin
+    ANSELbits.ADCS      = 0b101;        // Use sampling Freq. = Fosc/16 (4 usec at 4MHz) 
+    ADCON0bits.ADFM     = 1;            // Format of ADC value is "Right justified" (Uses both ADRESH and ADRESL)
+    ADCON0bits.VCFG     = 0;            // Use Vdd is the +ve reference
+    ADCON0bits.CHS      = 0b11;         // Set pin GPIO4 (AN3) to be used for reading an analogue value
     ADCON0bits.ADON     = 1;            // Turn on the ADC
     GPIO                = 0b000011;     // Set LED1 and LED2 off
     TRISIO              = 0b111100;     // TRISIO direction as output
@@ -46,11 +47,10 @@ void main()
 // Main Loop
     while(1)
     {
-        ADCON0bits.CHS = 0b11;          // select analogue input, AN3 (GPIO4))
         ADCON0bits.GO  = 1;             // start the conversion
         while(ADCON0bits.GO == 1){};    // wait for the conversion to end
         adc_val = 0x0000;
-        adc_val = ((unsigned int)ADRESH<<8)+ADRESL;  // read a 10 Bit ADC value
+        adc_val = ((unsigned int)ADRESH<<8) + ADRESL;  // read a 10 Bit ADC value
 
         // Display the ADC value in 2 bits using LED1 and LED2  
         if (adc_val < 256)  
@@ -66,8 +66,7 @@ void main()
         {   GPIO0 = 0;          // LED2 ON
             GPIO1 = 0;          // LED2 ON
         }  
-        
         __delay_ms(2); //ADC refresh rate
-
-            }
     }
+    
+}
