@@ -1,1 +1,118 @@
-*** Coming Soon ***
+// This program blinks LED2 roughly once per second.
+// This is achieved using an internal timer to raise an interrupt. 
+// The code in the interrupt routine is executed 80 times a second.
+// A counter is incremented each time the interupt is trriggered.
+// Once the counter exceeds a count of 40, LED2 is made to change state
+// The frequency calculation is "4,000,000 / (256 * 201 * 40 * 2) " which is roughly 1  
+// The oscillator frequency is 4,000,000
+// The Prescaler TMR0 rate is 256 
+// The Prescaler TMR0 start count value is 201 (0xC3)
+// The Loop counter is 40
+// 2 changes of state are needed to effect a wavelength  
+
+// The internal oscillator frequency is supposed to be 4MHz but unfortunately, my pic is not accurate. 
+// If it was, then a TMRO start count value of 0xc3 (195) should have been used. 
+// However, because the oscillator in my pic works at a slightly higher frequency, I have had to use a slightly larger (delay) value in TMR0 of 201 (0xC9)      
+// The delay required for your pic may be different. If you are lucky, Unfortunately, the supplier provided adjustment value may still be in the last memory location
+// If so, your frequency will be acccurate, For me alas, the value was wiped a while ago 
+
+
+/////////////////////////// MAKEUP OF BOARD //////////////////////////////////
+// The default connections for the 6 pins is as follows (if you leave the links in)
+// - GPIO0 - "LED1" - Output   
+// - GPIO1 - "LED2" - Output  
+// - GPIO2 - "KEY1" - Input - Right  button (if button not closed to ground, pin is pulled high by 10K resistor) 
+// - GPIO3 - "REST" - Input - Left   button (if button not closed to ground, pin is pulled high by 10K resistor - N.B. This is the MCLR pin - SHOULD ALWAYS BE AN INPUT)
+// - GPIO4 - "ADC"  - Input - Variable Resistor 
+// - GPIO5 - "KEY2" - Input - Middle button (if button not closed to ground, pin is pulled high by 10K resistor)   
+// When a Switch is pressed, it grounds the pin (the pin is normally kept high by a 10K resistor to 5V)
+// One leg of the LEDS is connected to 5V. This means that to make the LED light up, you have send 0V to its associated pin 
+/////////////////////////// MAKEUP OF BOARD //////////////////////////////////
+
+
+// This is the Configuration section
+#pragma config FOSC  = INTRCIO  // Oscillator Selection bits (INTOSC oscillator: I/O function on GP4/OSC2/CLKOUT pin, I/O function on GP5/OSC1/CLKIN)
+#pragma config WDTE  = OFF      // Watchdog Timer Enable bit (WDT disabled)
+#pragma config PWRTE = OFF      // Power-Up Timer Enable bit (PWRT disabled)
+#pragma config MCLRE = OFF      // GP3/MCLR pin function select (GP3/MCLR pin function is digital I/O, MCLR internally tied to VDD)
+#pragma config BOREN = OFF      // Brown-out Detect Enable bit (BOD disabled)
+#pragma config CP    = OFF      // Code Protection bit (Program Memory code protection is disabled)
+#pragma config CPD   = OFF      // Data Code Protection bit (Data memory code protection is disabled)
+#define _XTAL_FREQ 4000000
+#include <xc.h>
+
+int zcount = 0;
+void __interrupt() TMR2INT(void);
+
+
+//***************************************************************
+//* Main
+//***************************************************************
+
+int main() {
+
+    // Initialisation
+    TRISIO = 0b111111;  // First line - always set all pins as inputs !!!      
+    WPU    = 0;         // Disable all weak pull up 
+    CMCON  = 7;         // Turn comparators off  (The default is that they are on)
+    VRCON  = 0;         // Disable voltage reference
+    ANSEL  = 0;         // Switch off ADC (Configure all pins to be digital only)
+    T1CON  = 0x00;      // Timer1 disabled
+    OPTION_REG = 0b10000111; //set timer pre-scaler to 256/prescaler assigned to timer module 
+    //	nGPPU  = 1;     // internal pullups disabled
+    //	INTEDG = 0;     // falling edge trigger the interrupt__don't care
+    //	T0CS   = 0;		// Internal timer transition on cycle clock
+    //	T0SE   = 0		// increment on low to high transition of GP2
+    //	PSA    = 0		// prescaler is set to the TIMER0 module
+    //  ps>>111, or 156  // Prescaler TMR0 rate = 1 in 256
+
+    INTCON = 0b10100000;
+    //GIE = 1           // enable global interrupts
+    //PEIE = 0          // enable peripheral interrupts
+    //T0IE = 1          // enable TMR0 interrupts
+    //INTE = 0          // disables GP2 interrupt
+    //GPIE = 0          // disables GPIO port change interrupt
+    //T0IF = 0          // timer0 overflow flag
+    //INTF = 0          // GP2 interrupt flag
+    //GPIF = 0          // ext pin change interrupt
+    T1CON = 0; // clear the unused timer
+
+    GPIO0 = 1; // Set LED1 to High (not lit)        
+    GPIO1 = 1; // Set LED1 to High (not lit)     
+    //    GPIO1 = 1; // Set LED2 to High (not lit)       
+    TRISIO = 0b111100; // Configure GPIO0 as an output and the other 5 pins as inputs 
+
+
+    // MAIN LOOP 
+    while (1) {
+    // Note that the LED is flashing and this delay is 10 seconds.
+    // This is proof that the interrupt is triggered whilst the program
+    // is processing this delay command 
+        __delay_ms(10000);
+    }
+
+    return 0;
+}
+
+/********************************************************************************************
+ * void __interrupt() TMR2INT(void);
+ *********************************************************************************************/
+void __interrupt() TMR2INT(void) {
+
+    T0IF = 0;           // Reset Timer    
+    TMR0 = 0xc9;        // Set 8-bit prescaler counter start point for Timer countdown to 201    
+        
+// The internal oscillator frequency is supposed to be 4MHz but unfortunately, my pic is not accurate. 
+// If it was, then the TMRO value used above should really be 0xc3 (195). 
+// This is the math for an accurate frequency pic     "4,000,000 / (* 256 * 195 )" ~= 80.12 (near enough to 80)
+// However, because the oscillator in my pic works at a slightly higher frequency, I have to use a slightly larger (delay) value in TMR0 ( 0xc9 = 201)      
+// N.B. Because each interrupt occurs 80 times a second, a counter is used to divide this further - by 40. 
+// Dividing 80 by 40 results two LED state changes per second - which means that the LED is seen to flash at a rate of 1 Hz 
+// N.B. Remember that one wavelength needs 2 changes of state (LED on and LED Off) 
+    zcount++;
+    if (zcount >40) {
+    GPIO0 = GPIO0^1;    // Toggle "LED1" ON or OFF        
+    zcount = 0;
+    }
+    
+}
