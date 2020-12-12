@@ -13,8 +13,8 @@
 // The internal oscillator frequency is supposed to be 4MHz but unfortunately, my pic is not accurate. 
 // If it was, then a TMRO start count value of 0xc3 (195) should have been used. 
 // However, because the oscillator in my pic works at a slightly higher frequency, I have had to use a slightly larger (delay) value in TMR0 of 201 (0xC9)      
-// The delay required for your pic may be different. If you are lucky, Unfortunately, the supplier provided adjustment value may still be in the last memory location
-// If so, your frequency will be acccurate, For me alas, the value was wiped a while ago 
+// The delay required for your pic may be different. If you are lucky, the supplier provided adjustment value may still be in the last memory location
+// If so, your frequency will be accurate, For me alas, the value was wiped a while ago 
 
 
 /////////////////////////// MAKEUP OF BOARD //////////////////////////////////
