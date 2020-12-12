@@ -14,6 +14,7 @@ Please note:
    - 12F675_02_Interupt 	 
    - 12F675_03_timer 	 	 
    - 12F675_04_ADC 
+   - 12F675_05_sleep 
 - When you buy this board, you only get what you see in the picture below - a blue coloured development board with a 12F675 pic chip already installed and a black USB (power only) supply cable that connects to the board's black barrel connector. 
  - To program the installed pic chip using this board, you also need a "pickit 3" device which connects to the boards white housing ISCP interface via a 6 wire dupont harness. (See below for more information about this) 
  - There are 2 ways to supply regulated 5V to this dev board. (N.B. There is no power supply regulator onboard - do not exceed 5V)
@@ -56,7 +57,7 @@ The "Pickit 3" device connects to your PC via a (blue) USB cable and to the deve
     - https://www.youtube.com/watch?v=TneWtGyar6M&t=192s
 
 
-# How to set up and install the software and componenets
+# How to set up and install the software and components
 The above videos cover this - alternatively, follow the steps below
 - On your PC, 
   - Download and install both the MPLAB X IDE and XC8 compiler from the MPLAB website (It is free) 
@@ -83,7 +84,7 @@ The above videos cover this - alternatively, follow the steps below
 - PIC12F1501 - Modern replacement with better specs - use this for new projects
 
 # Other places to get information
- - GettingBlinky with assmebler
+ - GettingBlinky with assembler
    - https://leap.tardate.com/pic/gettingblinky/
  - Watchdog info   
    - https://www.youtube.com/watch?v=tPUwuX4tHOw 
