@@ -1,1 +1,99 @@
-*** Coming Soon ***
+// This program is an example of a pic that when initially powered up. it settles to "low power" SLEEP status. 
+// However, the pic can be woken up to do some processing and after the processing has completed, 
+// the pic then goes back to sleep again and stays in that "low power" state until it is woken up again.
+// The pic is woken up if Button "Key1" is pressed which grounds GPIO2 and the falling edge triggers an interrupt 
+// Once the PIC "wakes up", the code in the interrupt routine is executed - which just resets the interrupt flag and switches off further interrupt processing. 
+// However, because the PIC is now "woken up", it continues its processing straight after the "SLEEP" command that originally caused it to sleep!
+// The next command after the "SLEEP" command is for routine "action_code" to be executed. 
+// N.B. Using a separate routine is not really necessary - you could just code in the "main" routine 
+// Anyways, after routine "action_code" has been executed, the loop circles back to execute commands that restart interrupt processing and then immediately go back to sleep.
+// N.B. As a rule of thumb, always code your main logic away from the interrupt routine. e.g. Place it in routine "action_code" for this program
+// If you have to do things in the interrupt routine, set global flags in the interrupt routine and check for them in the main code (where you do the processing of that flag) 
+
+
+/////////////////////////// MAKEUP OF BOARD //////////////////////////////////
+// The default connections for the 6 pins is as follows (if you leave the links in)
+// - GPIO0 - "LED1" - Output   
+// - GPIO1 - "LED2" - Output  
+// - GPIO2 - "KEY1" - Input - Right  button (if button not closed to ground, pin is pulled high by 10K resistor) 
+// - GPIO3 - "REST" - Input - Left   button (if button not closed to ground, pin is pulled high by 10K resistor - N.B. This is the MCLR pin - SHOULD ALWAYS BE AN INPUT)
+// - GPIO4 - "ADC"  - Input - Variable Resistor 
+// - GPIO5 - "KEY2" - Input - Middle button (if button not closed to ground, pin is pulled high by 10K resistor)   
+// When a Switch is pressed, it grounds the pin (the pin is normally kept high by a 10K resistor to 5V)
+// One leg of the LEDS is connected to 5V. This means that to make the LED light up, you have send 0V to its associated pin 
+/////////////////////////// MAKEUP OF BOARD //////////////////////////////////
+
+// This is the Configuration section
+#pragma config FOSC  = INTRCIO  // Oscillator Selection bits (INTOSC oscillator: I/O function on GP4/OSC2/CLKOUT pin, I/O function on GP5/OSC1/CLKIN)
+#pragma config WDTE  = OFF      // Watchdog Timer Enable bit (WDT disabled)
+#pragma config PWRTE = OFF      // Power-Up Timer Enable bit (PWRT disabled)
+#pragma config MCLRE = OFF      // GP3/MCLR pin function select (GP3/MCLR pin function is digital I/O, MCLR internally tied to VDD)
+#pragma config BOREN = OFF      // Brown-out Detect Enable bit (BOD disabled)
+#pragma config CP    = OFF      // Code Protection bit (Program Memory code protection is disabled)
+#pragma config CPD   = OFF      // Data Code Protection bit (Data memory code protection is disabled)
+#define _XTAL_FREQ 4000000
+#include <xc.h>
+
+//ROUTINES
+void __interrupt() wake_interrupt(void);
+void action_code(void);
+
+//***************************************************************
+//* main 
+//***************************************************************
+int main() {
+
+    // Initialisation
+    TRISIO = 0b111111;  // First line - always set all pins as inputs !!!  
+    CMCON  = 7;         // Turn comparators off  (The default is that they are on)
+    WPU    = 0;         // Disable all weak pull up 
+    VRCON  = 0;         // Disable voltage reference
+    T1CON  = 0x00;      // Timer1 disabled
+    ANSEL  = 0;         // Switch off ADC (Configure all pins to be digital only)
+    GIE    = 0;         // Switch off Global interrupts for now
+    INTE   = 1;         // Enable GPIO2 to be an interrupt pin
+    INTEDG = 0;         // Set trigger to be a falling edge (when the switch is pressed)
+    PEIE   = 0;         // Disable peripheral interrupts       
+    GPIO0  = 1;         // Switch "LED1" off     
+    GPIO1  = 1;         // Switch "LED2" off     
+    TRISIO = 0b111100;  // Set the 2 led pins as outputs   
+
+    // Program loop
+    while (1) {
+        GIE     = 1;    // Switch ON interrupts 
+        GPIO0   = 1;    // Switch "LED1" off     
+        GPIO1   = 1;    // Switch "LED2" off     
+        SLEEP();        // Just SLEEP !!! 
+        action_code();  // Put your processing in this routine
+    }
+    return 0;
+}
+
+//***************************************************************
+//* action_code(void)
+//***************************************************************
+void action_code(void) {
+
+// Just toggle LED1 4 times !!   
+    for (int a = 0; a < 8; a++) {
+        GPIO0 = GPIO0^1; // Toggle "LED1" ON and OFF            
+        __delay_ms(300);
+    }
+
+};
+
+//***************************************************************
+//* interrupt1 (interrupt routine)
+//***************************************************************
+void __interrupt() wake_interrupt(void) {
+
+    // YOU DON'T HAVE TO DO ANYTHING HERE - ONLY UNCOMMENT IF YOU WANT TO CHECK/TEST INTERRUPTS
+//    if (INTF) { //check external interrupt flag bit       
+//        for (int a = 0; a < 20; a++) {
+//            GPIO1=GPIO1^1;  // Toggle "LED2" ON            
+//            __delay_ms(50);             
+//        }
+//    };
+    INTF = 0; // Reset Interrupt Flag
+    GIE = 0; // Switch off Interrupts
+}
