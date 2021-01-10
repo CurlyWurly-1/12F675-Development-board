@@ -15,6 +15,7 @@ Please note:
    - 12F675_03_timer 	 	 
    - 12F675_04_ADC 
    - 12F675_05_sleep 
+   - 12F675_06_uart 
 - When you buy this board, you only get what you see in the picture below - a blue coloured development board with a 12F675 pic chip already installed and a black USB (power only) supply cable that connects to the board's black barrel connector. 
  - To program the installed pic chip using this board, you also need a "pickit 3" device which connects to the boards white housing ISCP interface via a 6 wire dupont harness. (See below for more information about this) 
  - There are 2 ways to supply regulated 5V to this dev board. (N.B. There is no power supply regulator onboard - do not exceed 5V)
